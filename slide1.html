@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fa" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ناوگان پرسرعت خدمات مسافری</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Vazir', sans-serif;
+    }
+
+    body {
+      background: url('background.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .slider-banner {
+      height: 650px;
+      width: 100%;
+      max-width: 1400px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(4px);
+      border-radius: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      background-image: url("pic for slide/back.jpg");
+      background-size: cover;
+      animation: elasticZoomInEffect 2s ease-out forwards;
+    }
+
+    @keyframes elasticZoomInEffect {
+      0% {
+        transform: scaleX(0) scale(1.2);
+      }
+      50% {
+        transform: scaleX(1.2) scale(1.1);
+      }
+      100% {
+        transform: scaleX(1) scale(1);
+      }
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .h1-wrapper {
+      position: relative;
+      display: inline-block;
+      padding: 15px 25px;
+      overflow: hidden;
+    }
+
+    .h1-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to left, #c7d2fe, transparent);
+      border-radius: 10px;
+      z-index: 0;
+      transform: translateX(-100%);
+      animation: slideBg 1.5s ease-out forwards;
+    }
+
+    .content h1 {
+      position: relative;
+      font-size: 32px;
+      color: #333;
+      z-index: 1;
+      opacity: 0;
+      animation: scaleText 1s ease-in-out forwards;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes slideBg {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleText {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .description {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  z-index: 6;
+}
+
+.desc-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateY(100%);
+  animation: shutterUp 1s ease-out forwards;
+  animation-delay: 1.5s;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.desc-text {
+  position: relative;
+  color: #555;
+  font-size: 18px;
+  line-height: 1.8;
+  padding: 20px;
+  opacity: 0;
+  z-index: 2;
+  animation: fadeInDesc 1s ease-out forwards;
+  animation-delay: 2.2s;
+}
+
+@keyframes shutterUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fadeInDesc {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+
+
+.content button {
+  background-color: #e0e7ff;
+  border: none;
+  padding: 10px 25px;
+  font-size: 18px;
+  color: #4b5563;
+  border-radius: 8px;
+  width: fit-content;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  opacity: 0;
+  animation: fadeInButton 1.5s ease 2s forwards;
+}
+
+/* افکت ضربان برای متن داخل دکمه */
+.pulse-text {
+  display: inline-block;
+  animation: pulseText 1.5s infinite ease-in-out;
+}
+
+
+
+.pulse-text {
+  display: inline-block;
+  animation: pulseText 1.5s infinite ease-in-out;
+  animation-delay: 2.5s; /* برای تأخیر */
+}
+
+
+
+@keyframes pulseText {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+    .content button:hover {
+      background-color: #c7d2fe;
+    }
+
+    @keyframes fadeInButton {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+
+    .images {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-image {
+      position: relative;
+      width: 90%;
+      overflow: hidden;
+    }
+
+    .main-image div {
+      border: 3px solid white;
+      border-radius: 5px;
+    }
+
+    .main-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: translateX(200px);
+      opacity: 0;
+      animation: slideInFromRight 1.5s ease forwards 0.5s;
+    }
+
+    .small-images {
+      position: absolute;
+      bottom: -100px;
+      left: -25%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+    }
+
+    .small-images div {
+      border: 3px solid white;
+      border-radius: 8px;
+    }
+
+    .small-images img {
+      width: 230px;
+      height: 150px;
+      object-fit: cover;
+      transform: translateY(150px);
+      opacity: 0;
+      animation: slideInFromBottom 1.5s ease forwards 1s;
+    }
+
+    @keyframes slideInFromRight {
+      0% {
+        transform: translateX(200px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInFromBottom {
+      0% {
+        transform: translateY(150px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* اضافه کردن متن انیمیشنی به اسلایدر */
+    .slider-text {
+      position: absolute;
+      top: 50%;
+      left: 50%; /* وسط اسلایدر */
+      transform: translate(-50%, -50%); /* برای قرار دادن در وسط دقیق */
+      font-size: 36px;
+      font-weight: bold;
+      color: #fff;
+      animation: slideInLeft 1s ease-out forwards, fadeOut 1s ease 4s forwards;
+      opacity: 1;
+      transition: opacity 0.5s ease-out 4s;
+      z-index: 5;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 50%;
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    .slider-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 6px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+  z-index: 5;
+  direction: ltr;
+}
+
+.flip-char {
+  display: inline-block;
+  opacity: 0;
+  transform: rotateY(90deg);
+  animation: flipIn 0.6s forwards;
+}
+
+@keyframes flipIn {
+  from {
+    opacity: 0;
+    transform: rotateY(90deg) translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0deg) translateX(0);
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<div class="slider-banner">
+  <div class="content">
+    <!-- تغییر متن به A one rail -->
+    <div class="slider-text" id="animatedText"></div>
+
+    <div class="h1-wrapper">
+        <div class="h1-bg"></div>
+        <h1>ناوگان پرسرعت خدمات مسافری</h1>
+    </div>
+    
+    <div class="description">
+        <div class="desc-bg"></div>
+        <div class="desc-text">
+          ناوگان پر سرعت یکی از اقدامات کلیدی در بهبود سیستم حمل و نقل ریلی است. <br>
+          این نوع قطارها با سرعت‌های بالا، زمان سفر را به طور قابل توجهی کاهش می‌دهند.
+        </div>
+      </div>
+      
+      <button><span class="pulse-text">کلیک کنید</span></button>
+  </div>
+
+  <div class="images">
+    <div class="main-image">
+      <div>
+        <img src="pic for slide/0_32586.jpg" alt="تصویر قطار">
+      </div>
+    </div>
+    <div class="small-images">
+      <div>
+        <img src="pic for slide/0_34090.jpg" alt="تصویر کوچک ۱">
+      </div>
+      <div>
+        <img src="pic for slide/0_71250.jpg" alt="تصویر کوچک ۲">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    const text = "A one rail";
+    const container = document.getElementById("animatedText");
+    container.innerHTML = "";
+  
+    text.split("").forEach((char, index) => {
+      const span = document.createElement("span");
+      span.className = "flip-char";
+      span.textContent = char;
+      span.style.animationDelay = `${index * 0.2}s`;
+      container.appendChild(span);
+    });
+  </script>
+  
+</body>
+</html>
